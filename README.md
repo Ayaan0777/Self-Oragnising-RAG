@@ -13,6 +13,16 @@ Step 4- Upload the files on /ingest endpoint and query on /query endpoint , the 
  running through the local models
 
 
+NOTE:The current system uses:
+
+LangChain for RAG orchestration
+
+Pinecone for vector storage and retrieval
+
+Ollama to run local LLMs
+
+Gemma 2B as the LLM(its the lightweight model so retrieving is not that efficient)
+
 
 
 
