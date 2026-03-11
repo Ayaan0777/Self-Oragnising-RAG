@@ -1,6 +1,7 @@
-from langchain_ollama import ChatOllama, OllamaEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_pinecone import PineconeVectorStore
+from langchain_community.chat_models import ChatOllama
 from pinecone import Pinecone
 
 from config import settings
@@ -13,11 +14,10 @@ pc = Pinecone(api_key=settings.pinecone_api_key)
 def get_embeddings():
     """
     Returns the embedding model.
-    Currently using local Ollama embeddings.
+    Using HuggingFace MiniLM embeddings locally.
     """
-    return OllamaEmbeddings(
-        model=settings.embedding_model_name,
-        base_url=settings.ollama_base_url
+    return HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
 
